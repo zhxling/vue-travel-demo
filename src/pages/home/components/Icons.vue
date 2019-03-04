@@ -4,9 +4,9 @@
       <swiper-slide v-for="(page, index) in pages" :key="index">
         <div class="icon-item" v-for="item of page" :key="item.id">
           <div class="icon-img">
-            <img class="icon-img-content" :src="item.iconUrl" :alt="item.title">
+            <img class="icon-img-content" :src="item.imgUrl" :alt="item.desc">
           </div>
-          <span class="icon-desc">景点门票</span>
+          <span class="icon-desc">{{item.desc}}</span>
         </div>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
@@ -17,19 +17,11 @@
 <script>
 export default {
   name: 'HeaderIcons',
+  props: {
+    iconList: Array
+  },
   data () {
     return {
-      list: [
-        {id: 1, title: '景点门票', iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'},
-        {id: 2, title: '景点门票', iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'},
-        {id: 3, title: '景点门票', iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'},
-        {id: 4, title: '景点门票', iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'},
-        {id: 5, title: '景点门票', iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'},
-        {id: 6, title: '景点门票', iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'},
-        {id: 7, title: '景点门票', iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'},
-        {id: 8, title: '景点门票', iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'},
-        {id: 9, title: '景点门票', iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'}
-      ],
       swiperOption: {
         pagination: {
           el: '.swiper-pagination'
@@ -40,7 +32,7 @@ export default {
   computed: {
     pages () {
       const pages = []
-      this.list.forEach((item, index) => {
+      this.iconList.forEach((item, index) => {
         const page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []

@@ -9,16 +9,25 @@
         <span>输入城市/景点/游玩主题</span>
       </div>
     </div>
-    <div class="header-right">
-      <span>北京</span>
-      <span class="iconfont">&#xe65c;</span>
-    </div>
+    <router-link to='/city'>
+      <div class="header-right">
+          <span>{{this.city}}</span>
+          <span class="iconfont">&#xe65c;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  computed: {
+    ...mapState(['city'])
+  },
+  mounted () {
+    console.log(mapState(['city']))
+  }
 }
 </script>
 
@@ -45,6 +54,8 @@ export default {
         background: #fff
         color: #e4e7ea
     .header-right
-      width: 1.28rem
+      padding-left .2rem
+      padding-right .1rem
       text-align: center
+      color #fff
 </style>
