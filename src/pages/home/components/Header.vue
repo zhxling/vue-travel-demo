@@ -24,9 +24,6 @@ export default {
   name: 'HomeHeader',
   computed: {
     ...mapState(['city'])
-  },
-  mounted () {
-    console.log(mapState(['city']))
   }
 }
 </script>

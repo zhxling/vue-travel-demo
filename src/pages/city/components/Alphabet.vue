@@ -24,6 +24,7 @@ export default {
     return {
       touchStatus: false,
       startY: 0,
+      alphabetHeight: 0,
       timer: null
     }
   },
@@ -37,9 +38,9 @@ export default {
     }
   },
   updated () {
-    this.startY = this.$refs['A'][0].offsetTop
-    console.log(this.$refs['A'][0].getBoundingClientRect())
-    console.log(this.startY)
+    const rect = this.$refs['A'][0].getBoundingClientRect()
+    this.startY = rect.top
+    this.alphabetHeight = rect.bottom - rect.top
   },
   methods: {
     handleLetterClick (e) {
@@ -48,11 +49,18 @@ export default {
     handleTouchStart () {
       this.touchStatus = true
     },
-    handleTouchMove () {
-
+    handleTouchMove (e) {
+      if (this.touchStatus) {
+        const disY = e.touches[0].clientY - this.startY
+        const index = Math.floor(disY / this.alphabetHeight)
+        if (index >= 0 && index < this.letters.length) {
+          const letter = this.letters[index]
+          this.$emit('change', letter)
+        }
+      }
     },
     handleTouchEnd () {
-
+      this.touchStatus = false
     }
   }
 }

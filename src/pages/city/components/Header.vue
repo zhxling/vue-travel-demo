@@ -25,5 +25,4 @@ export default {
       float left
       padding-left .2rem
       color: #fff
-
 </style>
