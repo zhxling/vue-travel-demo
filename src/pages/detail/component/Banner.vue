@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="banner" @click="handleBannerClick">
+    <div class="banner" ref="banner" @click="handleBannerClick">
       <img class="banner-img" :src="bannerImg" :alt="sightName">
       <div class="banner-info">
         <div class="title">{{sightName}}</div>
