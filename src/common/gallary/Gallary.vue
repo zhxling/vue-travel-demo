@@ -1,5 +1,7 @@
 <template>
-  <div class="gallary" @click="handleGallaryClick">
+  <div class="gallary"
+    @touchmove.prevent
+    @click="handleGallaryClick">
     <div class="wrapper">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item, index) of imgs" :key="index">
@@ -46,7 +48,8 @@ export default {
   .gallary >>> .swiper-container
     overflow: inherit
   .gallary
-    position absolute
+    z-index: 99
+    position: fixed
     top 0
     left 0
     right 0

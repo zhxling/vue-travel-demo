@@ -33,9 +33,8 @@ export default {
   },
   methods: {
     handleScroll (event) {
+      console.log('dd')
       const scrollTop = document.documentElement.scrollTop
-      console.log(scrollTop)
-
       if (scrollTop > this.headerHeight) {
         let opacity = scrollTop / (this.bannerHeight - this.headerHeight)
         opacity = opacity > 1 ? 1 : opacity
@@ -76,6 +75,7 @@ export default {
     line-height $headerHeight
     background $bgColor
     color #fff
+    z-index 2
     .back-icon
       position absolute
       left 0

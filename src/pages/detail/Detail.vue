@@ -7,20 +7,24 @@
       :bannerImgs="gallaryImgs">
     </detail-banner>
     <detail-header :banner="bannerElement"></detail-header>
-    <div class="list"></div>
+    <div class="content">
+      <detail-list :list="list"></detail-list>
+    </div>
   </div>
 </template>
 
 <script>
 import DetailBanner from './component/Banner'
 import DetailHeader from './component/Header'
+import DetailList from './component/list'
 import axios from 'axios'
 
 export default {
   name: 'Detail',
   components: {
     DetailBanner,
-    DetailHeader
+    DetailHeader,
+    DetailList
   },
   data () {
     return {
@@ -33,7 +37,6 @@ export default {
   },
   updated () {
     this.bannerElement = this.$refs.banner
-    console.log(this.bannerElement)
   },
   methods: {
     getDetailInfo () {
@@ -61,6 +64,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .list
-    height 2500px
+.content
+    height: 50rem
 </style>
